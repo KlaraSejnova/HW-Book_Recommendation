@@ -20,7 +20,7 @@ def read_files(book_file = 'BX-Books.csv',book_ratings_file = 'BX-Book-Ratings.c
 
 
 def recommend_me(reader_book, ratings, books, prefered_rating = 10):
-    """function which at first reads the database and then search recommended book on the basis of the readers book"""
+    """function which at first reads the database and then search recommended book on the basis of the readers book and chosen value of rating"""
     #at first join tables
     #ratings_users = pandas.merge(users,ratings)
     all_information = pandas.merge(ratings,books)
