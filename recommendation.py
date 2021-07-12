@@ -13,7 +13,7 @@ while True:
         exit()
     elif input_book in books_in_list:
         print('Lets find you a new book')
-        #call the function which finds the book: recommend_me(reader_book,rating), rating is a rating of the book to be recommended
+        #call the function which finds the book: recommend_me
         recommend_me(input_book, ratings, books)
     else:
         print('Your book is not in our database.')
