@@ -3,6 +3,7 @@ from recommend_me import recommend_me, read_files
 
 ratings, books = read_files()
 books_in_list = books["Book-Title"].tolist()
+
 while True:
     #input book
     input_book = input('Input your book and we recommend you a new one to read or press enter to quit! ')

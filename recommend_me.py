@@ -1,6 +1,7 @@
 import pandas
 
 def read_files(book_file = 'BX-Books.csv',book_ratings_file = 'BX-Book-Ratings.csv'):
+    """function which reads the files"""
     #read and clean data
     #read Books file, seperator is ;, coding cp1251 due to russian letter, escapechar - wrong line 6542 - confused by backslash
     books = pandas.read_csv(book_file, sep = ';',encoding='cp1251', escapechar="\\")
@@ -31,7 +32,7 @@ def recommend_me(reader_book, ratings, books, prefered_rating = 10):
     users_in_list = high_ratings["User-ID"].tolist()
     new_book = all_information.loc[all_information["User-ID"].isin(users_in_list)]
     #we found readers who read your book now we will found what else they read
-    #only book with the rate higher or equal to the vaue and recommended book is not the same as the input book 
+    #only book with the rate higher or equal to the value and recommended book is not the same as the input book 
     new_book = new_book.loc[(new_book["Book-Rating"] >= prefered_rating) & (new_book["Book-Title"] != reader_book)]
     #from the highest prefered_rating
     new_book = new_book.sort_values(["Book-Rating"], ascending=False)
@@ -45,5 +46,4 @@ def recommend_me(reader_book, ratings, books, prefered_rating = 10):
     #make a table of 10 most recommended books
     new_book = new_book.drop_duplicates(["Book-Title"])
     new_book.set_index("Book-Title")
-    new_book[["Book-Title","Book-Author"]]
     print(new_book[["Book-Title","Book-Author"]])
