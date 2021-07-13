@@ -1,7 +1,11 @@
 import pandas
 
-def read_files(book_file = 'BX-Books.csv',book_ratings_file = 'BX-Book-Ratings.csv'):
-    """function which reads the files"""
+def read_files(book_file,book_ratings_file):
+    """function which reads the files
+    Parameters: book_file ... database of books *.csv
+              ratings file ... database of ratings of books by users *.csv
+    Return: dataframe for books and ratings
+    """
     #read and clean data
     #read Books file, seperator is ;, coding cp1251 due to russian letter, escapechar - wrong line 6542 - confused by backslash
     books = pandas.read_csv(book_file, sep = ';',encoding='cp1251', escapechar="\\")
@@ -19,8 +23,12 @@ def read_files(book_file = 'BX-Books.csv',book_ratings_file = 'BX-Book-Ratings.c
     return ratings, books
 
 
-def recommend_me(reader_book, ratings, books, prefered_rating = 10):
-    """function which at first reads the database and then search recommended book on the basis of the readers book and chosen value of rating"""
+def recommend_me(reader_book, ratings, books, prefered_rating):
+    """function which at first reads the database and then search recommended book on the basis of the readers book and chosen value of rating
+    Parameters: reader_book ... this book is input by a user of the code
+               ratings ... read_book function returns this dataframe
+               books ... read_book function returns this dataframe
+               prefered_rating ... value of the rating of the recommended book"""
     #at first join tables
     #ratings_users = pandas.merge(users,ratings)
     all_information = pandas.merge(ratings,books)

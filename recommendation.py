@@ -1,7 +1,7 @@
 import pandas
 from recommend_me import recommend_me, read_files
 
-ratings, books = read_files()
+ratings, books = read_files("./Example/BX-Books.csv","./Example/BX-Book-Ratings.csv")
 books_in_list = books["Book-Title"].tolist()
 
 while True:
@@ -14,6 +14,6 @@ while True:
     elif input_book in books_in_list:
         print('Lets find you a new book')
         #call the function which finds the book: recommend_me
-        recommend_me(input_book, ratings, books)
+        recommend_me(input_book, ratings, books, 10)
     else:
         print('Your book is not in our database.')
